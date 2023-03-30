@@ -1,0 +1,38 @@
+<%- include('Header') -%>
+<!-- <p>this is the content</p> -->
+<h2>url shortener</h2>
+<form action="/shorturls" method="post" class="input-group mb-3">
+    <label for="fullUrl" class="visually-hidden">url</label>
+    <input 
+        required 
+        placeholder="URL" 
+        type=url" 
+        name="fullUrl" 
+        id="fullUrl" 
+        class="form-control mr-2 col"
+    >
+    <button type="submit" class="btn btn-primary">shorten</button>
+</form>
+
+<table class="table table-striped table-responsive">
+    <thead>
+        <tr>
+            <th>Full URL</th>
+            <th>Short URL</th>
+            <th>Clicks</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <% shortUrls.forEach(shortUrl => { %>
+            <tr>
+                <!-- <td><a href="https://howsblog.org">https://howsblog.org</a></td> -->
+                <td><a href="<%= shortUrl.full %>"><%= shortUrl.full %></a></td>
+                <td><a href="<%= shortUrl.short %>"><%= shortUrl.short %></a></td>
+                <td><%= shortUrl.clicks %></td>
+            </tr>
+        <% }) %>
+        
+    </tbody>
+</table>
+<%- include('Footer') -%>
